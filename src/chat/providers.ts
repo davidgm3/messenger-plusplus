@@ -3,6 +3,7 @@ import {
 	arrayRemove,
 	arrayUnion,
 	collection,
+	deleteDoc,
 	doc,
 	getDoc,
 	getDocs,
@@ -11,7 +12,12 @@ import {
 	where,
 } from 'firebase/firestore';
 import { v4 } from 'uuid';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import {
+	deleteObject,
+	getDownloadURL,
+	ref,
+	uploadBytes,
+} from 'firebase/storage';
 import { FirebaseDB, FirebaseStorage } from '../firebase/config';
 import { Group, Message } from '../types/types';
 
@@ -62,9 +68,22 @@ export const joinGroup = async (
 //Returns true if successful, false otherwise
 export const removeFromGroup = async (groupId: string, uid: string) => {
 	try {
-		await updateDoc(doc(FirebaseDB, 'groups', groupId), {
+		const docRef = doc(FirebaseDB, 'groups', groupId);
+		await updateDoc(docRef, {
 			members: arrayRemove(uid),
 		});
+		const docSnap = await getDoc(docRef);
+		if (docSnap.exists()) {
+			const data = docSnap.data();
+			const photoURL = data?.photoURL;
+
+			if (data?.members.length === 0) {
+				//delete photo from storage
+				const photoRef = ref(FirebaseStorage, photoURL);
+				await deleteObject(photoRef);
+				await deleteDoc(docRef);
+			}
+		}
 		return true;
 	} catch (e) {
 		console.log(e);

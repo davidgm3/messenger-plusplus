@@ -37,6 +37,9 @@ export const useCheckAuthState = () => {
 					collection(FirebaseDB, 'groups'),
 					() => {
 						dispatch(reloadGroups());
+					},
+					(error) => {
+						console.log(error);
 					}
 				);
 			}
