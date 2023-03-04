@@ -49,6 +49,7 @@ export const MessageBox = ({ message, onLoadUserInfo }: Props) => {
 						className='rounded-full w-full aspect-square'
 						src={userInfo?.photoURL || '/default-user.png'}
 						alt=''
+						referrerPolicy='no-referrer'
 					/>
 				</div>
 				<div>

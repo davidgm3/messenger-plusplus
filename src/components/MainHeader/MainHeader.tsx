@@ -37,6 +37,7 @@ export const MainHeader = () => {
 								onClick={() => {
 									setShowProfilePopup(!showProfilePopup);
 								}}
+								referrerPolicy='no-referrer'
 							/>
 						)}
 						{showProfilePopup && <ProfilePopup />}
