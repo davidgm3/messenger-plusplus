@@ -32,10 +32,12 @@ export const useCheckAuthState = () => {
 						photoURL,
 					})
 				);
-				setListener(
-					onSnapshot(collection(FirebaseDB, 'groups'), () => {
-						dispatch(reloadGroups()), () => console.log('error');
-					})
+
+				const _listener = onSnapshot(
+					collection(FirebaseDB, 'groups'),
+					() => {
+						dispatch(reloadGroups());
+					}
 				);
 			}
 			//load groups from firebase when auth state changes

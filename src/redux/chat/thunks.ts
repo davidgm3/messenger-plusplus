@@ -48,6 +48,7 @@ export const reloadGroups = () => {
 			//sets groups in store
 			dispatch(setGroups(groups));
 			dispatch(setActiveGroup(activeGroupId));
+			console.log('reload groups');
 		} catch (error) {
 			console.log(error);
 		}
