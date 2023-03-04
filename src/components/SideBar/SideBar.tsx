@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { createNewGroup, getGroupInfo, joinGroup } from '../../chat/providers';
-
 import { useAppSelector } from '../../redux/hooks';
-import { useAppDispatch } from '../../redux/hooks';
+
 import { RootState } from '../../redux/store';
 import { Group } from '../../types/types';
-import { loadGroups } from '../../redux/chat/thunks';
+
 import { GroupBox } from './GroupBox';
 import { JoinGroupBox } from './JoinGroupBox';
 import { CreateNewGroupBox } from './CreateNewGroupBox';
