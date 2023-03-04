@@ -5,9 +5,10 @@ import { Message as IMessage, User } from '../../types/types';
 
 interface Props {
 	message: IMessage;
+	onLoadUserInfo?: () => void;
 }
 
-export const MessageBox = ({ message }: Props) => {
+export const MessageBox = ({ message, onLoadUserInfo }: Props) => {
 	//formats date into text
 	const datetimeStr = useMemo(() => {
 		const date = new Date(message.timestamp);
@@ -29,9 +30,15 @@ export const MessageBox = ({ message }: Props) => {
 
 	//fetches user info from sender when props change
 	useEffect(() => {
-		getUserInfo(message.senderId).then((info) => {
-			if (info) setUserInfo(info as User);
-		});
+		getUserInfo(message.senderId)
+			.then((info) => {
+				if (info) setUserInfo(info as User);
+			})
+			.then(() => {
+				if (typeof onLoadUserInfo === 'function') {
+					onLoadUserInfo();
+				}
+			});
 	}, [message]);
 
 	return (
