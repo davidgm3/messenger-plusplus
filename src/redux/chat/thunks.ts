@@ -22,6 +22,8 @@ export const newMessage = (message: Message) => {
 			sendNewMessage(message, getState().chat.activeGroup?.id || '');
 			//pushes message to active group in store
 			dispatch(pushMessageToActiveGroup(message));
+			//reload groups
+			dispatch(reloadGroups());
 		} catch (error) {
 			console.log(error);
 		}
