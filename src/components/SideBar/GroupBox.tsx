@@ -6,9 +6,10 @@ import { useEffect, useState } from 'react';
 import { getUserInfo } from '../../auth/providers';
 interface Props {
 	group: Group;
+	onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
-export const GroupBox = ({ group }: Props) => {
+export const GroupBox = ({ group, onClick }: Props) => {
 	const dispatch = useAppDispatch();
 
 	//holds info of the last user that sent a message
@@ -32,7 +33,13 @@ export const GroupBox = ({ group }: Props) => {
 		<div
 			key={group.id}
 			className='bg-blue-900 rounded-md flex px-3 py-2 gap-3 justify-start border-2 border-zinc-400 cursor-pointer'
-			onClick={() => dispatch(setActiveGroup(group.id))}
+			onClick={(e) => {
+				dispatch(setActiveGroup(group.id));
+				if (typeof onClick === 'function') {
+					onClick(e);
+					console.log('click');
+				}
+			}}
 		>
 			<div className='h-12 w-12 shrink-0'>
 				<img
