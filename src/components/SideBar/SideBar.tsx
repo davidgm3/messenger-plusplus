@@ -36,10 +36,10 @@ export const SideBar = () => {
 				if (!isOpen) setIsOpen(true);
 			}}
 			{...handlers}
-			className={`select-none bg-zinc-200 border-r-2 p-2 border-zinc-400  basis-[350px] flex flex-col gap-2 text-white overflow-y-auto h-full shrink-0 grow-0 fixed sm:static ${
-				isOpen ? 'translate-x-0 w-full' : '-translate-x-[90%] w-full'
+			className={`select-none bg-zinc-200 border-r-2 p-2 border-zinc-400  basis-[350px] flex flex-col gap-2 text-white overflow-y-auto h-full shrink-0 grow-0 fixed md:static ${
+				isOpen ? 'translate-x-0 w-[90%]' : '-translate-x-[90%] w-full'
 			} transition-all duration-300 ease-in-out
-			sm:!translate-x-0
+			md:!translate-x-0
 				`}
 		>
 			{groups.map((group: Group) => (

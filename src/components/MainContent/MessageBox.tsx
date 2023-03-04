@@ -54,7 +54,7 @@ export const MessageBox = ({ message, onLoadUserInfo }: Props) => {
 				</div>
 				<div>
 					<div className='flex gap-3'>
-						<div className='font-semibold text-sm'>
+						<div className='font-semibold  text-sm'>
 							{userInfo?.displayName}
 						</div>
 						<div className='text-xs ml-auto'>{datetimeStr}</div>
