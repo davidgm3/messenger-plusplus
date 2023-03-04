@@ -32,6 +32,11 @@ export const newMessage = (message: Message) => {
 export const reloadGroups = () => {
 	return async (dispatch: AppDispatch, getState: () => RootState) => {
 		try {
+			if (!getState().auth.user) {
+				dispatch(setGroups([]));
+				dispatch(setActiveGroup(null));
+				return;
+			}
 			//gets groups from firestore
 			const groups = await getGroupsFromUser(
 				getState().auth.user?.uid || ''

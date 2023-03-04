@@ -47,18 +47,22 @@ export const signInWithGoogle = async (): Promise<UserCredential> => {
 
 //given uid, returns User object
 export const getUserInfo = async (uid: string): Promise<User | null> => {
-	//ref to user document in firestore
-	const ref = doc(FirebaseDB, 'users', uid);
-	//gets user document
-	const docSnap: DocumentSnapshot<DocumentData> = await getDoc(ref);
+	try {
+		//ref to user document in firestore
+		const ref = doc(FirebaseDB, 'users', uid);
+		//gets user document
+		const docSnap: DocumentSnapshot<DocumentData> = await getDoc(ref);
 
-	//if user doesn't exist, return null
-	if (!docSnap.exists()) return null;
+		//if user doesn't exist, return null
+		if (!docSnap.exists()) return null;
 
-	//formats data
-	const res = {
-		...(docSnap.data() as User),
-		uid,
-	};
-	return res;
+		//formats data
+		const res = {
+			...(docSnap.data() as User),
+			uid,
+		};
+		return res;
+	} catch (e) {
+		return null;
+	}
 };

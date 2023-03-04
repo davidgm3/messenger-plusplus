@@ -18,7 +18,7 @@ export const chatSlice = createSlice({
 		addGroup(state: ChatState, action: { payload: Group }) {
 			state.groups.push(action.payload);
 		},
-		setActiveGroup(state: ChatState, action: { payload: string }) {
+		setActiveGroup(state: ChatState, action: { payload: string | null }) {
 			state.activeGroup =
 				state.groups.find((group) => group.id === action.payload) ||
 				null;
