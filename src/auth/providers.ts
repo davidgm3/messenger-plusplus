@@ -8,6 +8,9 @@ import {
 import { FirebaseAuth } from '../firebase/config';
 import { FirebaseDB } from '../firebase/config';
 const googleAuthProvider = new GoogleAuthProvider();
+googleAuthProvider.setCustomParameters({
+	prompt: 'select_account',
+});
 import {
 	getDoc,
 	setDoc,
