@@ -43,7 +43,7 @@ export const GroupBox = ({ group, onClick }: Props) => {
 		>
 			<div className='h-10 w-10 sm:h-12 sm:w-12 shrink-0'>
 				<img
-					className=' h-10 w-10 sm:h-12 sm:w-12 rounded-full'
+					className=' h-10 w-10 sm:h-12 sm:w-12 rounded-full object-cover'
 					src={group?.photoURL || '/default-group.png'}
 					alt=''
 				/>
