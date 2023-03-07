@@ -25,9 +25,9 @@ export const CreateNewGroupBox = () => {
 		setNewGroupPhoto(null);
 	};
 	return (
-		<div className='bg-blue-900 rounded-md flex flex-col p-2 sm:p-3 gap-2 sm:gap-3 justify-start border-2 border-zinc-400 cursor-pointer text-sm sm:text-base'>
+		<div className='bg-gray-800 rounded-md flex flex-col p-2 sm:p-3 gap-2 sm:gap-3 justify-start border border-gray-600 cursor-pointer text-sm sm:text-base'>
 			<input
-				className='bg-blue-500 w-full rounded-md flex items-center justify-center outline-none px-4 py-1 placeholder:text-white'
+				className='bg-gray-700 border border-gray-600 w-full rounded-md flex items-center justify-center outline-none px-4 py-1 placeholder:text-white'
 				type='text'
 				placeholder='Enter group name'
 				value={newGroupInput}
@@ -43,12 +43,12 @@ export const CreateNewGroupBox = () => {
 							setNewGroupPhoto(e.target.files[0]);
 						}
 					}}
-					className='py-1 text-sm px-3 w-full bg-blue-500 rounded-md'
+					className='py-1 text-sm px-3 w-full bg-gray-700  border border-gray-600 rounded-md'
 				/>
 			</div>
 
 			<button
-				className='bg-blue-200 text-black rounded-md font-semibold py-1'
+				className='bg-gray-700 border border-gray-600 rounded-md font-semibold py-1'
 				onClick={handleNewGroup}
 			>
 				Create new group

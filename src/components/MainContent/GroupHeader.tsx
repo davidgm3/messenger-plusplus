@@ -56,7 +56,7 @@ export const GroupHeader = () => {
 	if (!activeGroup) return null;
 
 	return (
-		<div className='bg-blue-200 py-2 px-4 border-b-2 border-b-zinc-400 '>
+		<div className='bg-gray-900 py-2 px-4 border-b border-b-gray-600 '>
 			<div className='flex items-center justify-between'>
 				<div>
 					<div className='flex items-center'>
@@ -65,12 +65,12 @@ export const GroupHeader = () => {
 							src={activeGroup.photoURL || '/default-group.png'}
 							alt='Group Photo'
 						/>
-						<h2 className='font-semibold text-md    sm:text-xl'>
+						<h2 className='font-semibold text-md text-white   sm:text-xl'>
 							{activeGroup.name}
 						</h2>
 					</div>
-					<div className='text-gray-500 text-sm sm:text-base'>
-						<span className='text-black font-semibold'>
+					<div className='text-gray-300 text-sm sm:text-base'>
+						<span className='text-white font-semibold'>
 							Members:{' '}
 						</span>
 
@@ -92,7 +92,7 @@ export const GroupHeader = () => {
 				<div className='flex flex-col gap-2'>
 					<div>
 						<button
-							className='bg-blue-600 font-semibold text-white px-2 py-1 rounded-md text-xs sm:text-sm min-w-max w-full hover:bg-blue-700 transition-colors'
+							className=' bg-gray-700 border border-gray-600 font-semibold text-white px-2 py-1 rounded-md text-xs sm:text-sm min-w-max w-full hover:bg-blue-700 transition-colors'
 							onClick={() =>
 								navigator.clipboard.writeText(activeGroup.id)
 							}
@@ -102,7 +102,7 @@ export const GroupHeader = () => {
 					</div>
 					<div>
 						<button
-							className='bg-red-600 font-semibold text-white px-2 py-1 rounded-md text-xs sm:text-sm min-w-max w-full hover:bg-red-700 transition-colors'
+							className='bg-gray-700 border border-gray-600 font-semibold text-white px-2 py-1 rounded-md text-xs sm:text-sm min-w-max w-full hover:bg-red-700 transition-colors'
 							onClick={() => onLeaveGroup()}
 						>
 							Leave group

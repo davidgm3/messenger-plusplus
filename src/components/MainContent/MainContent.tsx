@@ -41,7 +41,7 @@ export const MainContent = () => {
 	}, [chatInfo.activeGroup?.messages]);
 
 	return (
-		<div className='bg-zinc-200  flex-grow flex flex-col justify-between h-full overflow-x-hidden pl-[10%] md:pl-0'>
+		<div className='bg-gray-900 flex-grow flex flex-col justify-between h-full overflow-x-hidden pl-[10%] md:pl-0'>
 			{chatInfo.activeGroup ? (
 				<>
 					<GroupHeader />

@@ -32,7 +32,7 @@ export const GroupBox = ({ group, onClick }: Props) => {
 	return (
 		<div
 			key={group.id}
-			className='bg-blue-900 rounded-md flex px-3 py-2 gap-3 justify-start border-2 border-zinc-400 cursor-pointer'
+			className='bg-gray-800 rounded-md flex px-3 py-2 gap-3 justify-start border border-gray-600 cursor-pointer'
 			onClick={(e) => {
 				dispatch(setActiveGroup(group.id));
 				if (typeof onClick === 'function') {

@@ -42,7 +42,7 @@ export const MessageBox = ({ message, onLoadUserInfo }: Props) => {
 	}, [message]);
 
 	return (
-		<div className='bg-white hover:bg-blue-200 border-2 border-zinc-400 rounded-md  px-4 py-2 my-2 mx-4 transition-colors overflow-hidden  break-words'>
+		<div className='bg-gray-800 text-white hover:bg-gray-700 border border-gray-700 rounded-md  px-4 py-2 my-2 mx-4 transition-colors overflow-hidden  break-words'>
 			<div className='flex gap-4 w-full grow'>
 				<div className='w-8 h-8 sm:w-10 sm:h-10 rounded-full flex-shrink-0'>
 					<img

@@ -35,12 +35,12 @@ export const InputBar = () => {
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	return (
-		<div className='bg-blue-200 border-y-2 border-r-2 border-r-zinc-400  border-y-zinc-400 px-4 py-4 sm:px-8 sm:py-8'>
+		<div className='bg-gray border-y border-r border-r-gray-600  border-y-gray-600 px-4 py-4 sm:px-8 sm:py-8'>
 			<form onSubmit={onSubmit}>
 				<input
 					ref={inputRef}
 					type='text'
-					className='w-full bg-white rounded-md border-2 border-zinc-400 px-3 py-1 sm:px-4 sm:py-2 outline-none text-sm sm:text-base'
+					className='w-full bg-gray-800 rounded-md border border-gray-600 px-3 py-1 sm:px-4 sm:py-2 outline-none text-sm sm:text-base text-white'
 					placeholder='Type a message'
 					value={currInput}
 					onChange={(e) => setCurrInput(e.target.value)}

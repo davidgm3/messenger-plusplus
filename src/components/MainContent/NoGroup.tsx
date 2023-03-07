@@ -1,6 +1,6 @@
 export const NoGroup = () => {
 	return (
-		<div className='bg-zinc-200  flex-grow flex flex-col justify-center items-center overflow-x-hidden '>
+		<div className='bg-gray-900 text-white  flex-grow flex flex-col justify-center items-center overflow-x-hidden '>
 			<div className='text-4xl font-semibold font-shantel-sans text-center flex flex-col gap-16 px-4'>
 				<span>Woops, it's empty over here!</span>
 

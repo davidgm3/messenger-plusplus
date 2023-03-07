@@ -62,10 +62,10 @@ export const JoinGroupBox = () => {
 	}, [joinGroupInfo]);
 
 	return (
-		<div className='bg-blue-900 rounded-md flex flex-col p-2 sm:p-3 gap-2 sm:gap-3 justify-start border-2 border-zinc-400 cursor-pointer text-sm sm:text-base'>
+		<div className='bg-gray-800 rounded-md flex flex-col p-2 sm:p-3 gap-2 sm:gap-3 justify-start border border-gray-600 cursor-pointer text-sm sm:text-base'>
 			<div className='flex'>
 				<input
-					className='bg-blue-500 w-full rounded-md flex items-center justify-center outline-none px-4 py-1 placeholder:text-white text-sm sm:text-base'
+					className='bg-gray-700 border border-gray-600 w-full rounded-md flex items-center justify-center outline-none px-4 py-1 placeholder:text-white text-sm sm:text-base'
 					type='text'
 					placeholder='Enter code invite'
 					value={joinGroupInput}
@@ -99,7 +99,7 @@ export const JoinGroupBox = () => {
 				</>
 			)}
 			<button
-				className='bg-blue-200 text-black font-semibold px-4 py-1 rounded-md'
+				className='bg-gray-700 border border-gray-600 font-semibold px-4 py-1 rounded-md'
 				onClick={handleJoinGroup}
 			>
 				Join a group

@@ -36,7 +36,7 @@ export const SideBar = () => {
 				if (!isOpen) setIsOpen(true);
 			}}
 			{...handlers}
-			className={`select-none bg-zinc-200 border-r-2 p-2 border-zinc-400  basis-[350px] flex flex-col gap-2 text-white overflow-y-auto h-full shrink-0 grow-0 fixed md:static ${
+			className={`select-none bg-gray-900 border-r p-2 border-gray-600  basis-[350px] flex flex-col gap-2 text-white overflow-y-auto h-full shrink-0 grow-0 fixed md:static ${
 				isOpen ? 'translate-x-0 w-[90%]' : '-translate-x-[90%] w-full'
 			} transition-all duration-300 ease-in-out
 			md:!translate-x-0
