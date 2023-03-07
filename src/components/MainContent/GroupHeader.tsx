@@ -61,7 +61,7 @@ export const GroupHeader = () => {
 				<div>
 					<div className='flex items-center'>
 						<img
-							className='sm:h-12 sm:w-12 h-8 w-8 rounded-full mr-4'
+							className='sm:h-12 sm:w-12 h-8 w-8 object-cover rounded-full mr-4'
 							src={activeGroup.photoURL || '/default-group.png'}
 							alt='Group Photo'
 						/>
