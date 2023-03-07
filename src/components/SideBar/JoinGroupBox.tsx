@@ -88,6 +88,7 @@ export const JoinGroupBox = () => {
 									(memberInfo) => memberInfo.uid === member
 								)?.displayName;
 							})}
+							{''}
 						</>
 					</div>
 				</>
