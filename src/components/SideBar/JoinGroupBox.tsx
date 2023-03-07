@@ -87,8 +87,7 @@ export const JoinGroupBox = () => {
 								return membersInfo.find(
 									(memberInfo) => memberInfo.uid === member
 								)?.displayName;
-							})}
-							{''}
+							})}{' '}
 						</>
 					</div>
 				</>
