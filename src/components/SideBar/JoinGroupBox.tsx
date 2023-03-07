@@ -83,12 +83,17 @@ export const JoinGroupBox = () => {
 					<div>
 						<>
 							Group members:{' '}
-							{joinGroupInfo.members.map((member) => {
-								return membersInfo.find(
-									(memberInfo) => memberInfo.uid === member
-								)?.displayName;
+							{joinGroupInfo.members.map((member, index) => {
+								return (
+									membersInfo.find(
+										(memberInfo) =>
+											memberInfo.uid === member
+									)?.displayName +
+									(index !== joinGroupInfo.members.length - 1
+										? ', '
+										: ' ')
+								);
 							})}
-							&nbsp;
 						</>
 					</div>
 				</>
