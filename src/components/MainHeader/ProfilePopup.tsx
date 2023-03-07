@@ -8,7 +8,7 @@ export const ProfilePopup = () => {
 	const dispatch = useAppDispatch();
 
 	return (
-		<div className=' overflow-hidden absolute bg-blue-900 right-0 w-max flex-col px-2 shadow-xl border-2 border-zinc-400 rounded-md py-2 justify-start top-[120%] animate-fadeIn duration-75'>
+		<div className=' overflow-hidden absolute bg-blue-900 right-0 w-max flex-col px-2 shadow-xl border-2 border-zinc-400 rounded-md py-2 justify-start top-[120%] animate-fadeIn duration-75 z-[10000]'>
 			<div>
 				{authState.status === 'loggedIn' ? (
 					<>
