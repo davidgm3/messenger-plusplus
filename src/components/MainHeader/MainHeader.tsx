@@ -22,16 +22,17 @@ export const MainHeader = () => {
 	}, [authState.status]);
 
 	return (
-		<div className='bg-blue-900 h-20 border-b-2 border-b-zinc-400'>
-			<div className='py-4 flex items-center container mx-auto text-white h-full'>
-				<div className='font-bold text-2xl font-shantel-sans'>
+		<div className='bg-blue-900 h-16 sm:h-20 border-b-2 border-b-zinc-400'>
+			<div className='flex items-center container mx-auto text-white h-full'>
+				<div className='font-bold text-xl sm:text-2xl font-shantel-sans'>
 					Messenger++
 				</div>
 				<div className='flex items-center ml-auto'>
 					<div className='mr-2 group relative'>
 						{authState.status === 'loggedIn' && (
 							<img
-								className='rounded-full w-10 h-10 cursor-pointer'
+								className='rounded-full w-10 h-10 
+								sm:w-14 sm:h-14 cursor-pointer'
 								src={authState.user?.photoURL}
 								alt=''
 								onClick={() => {

@@ -41,19 +41,19 @@ export const GroupBox = ({ group, onClick }: Props) => {
 				}
 			}}
 		>
-			<div className='h-12 w-12 shrink-0'>
+			<div className='h-10 w-10 sm:h-12 sm:w-12 shrink-0'>
 				<img
-					className='h-12 w-12 rounded-full'
+					className=' h-10 w-10 sm:h-12 sm:w-12 rounded-full'
 					src={group?.photoURL || '/default-group.png'}
 					alt=''
 				/>
 			</div>
 			<div className='flex-grow'>
-				<div className='font-semibold text-lg'>
+				<div className='font-semibold sm:text-lg'>
 					{group.name || 'No name!'}
 				</div>
 				<div className='flex items-center justify-between w-full'>
-					<div className='text-sm'>
+					<div className='text-xs sm:text-sm'>
 						<span className='font-semibold'>
 							{lastUserInfo?.displayName &&
 								sliceWithEllipsis(

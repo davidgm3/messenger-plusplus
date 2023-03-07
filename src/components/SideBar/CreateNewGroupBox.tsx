@@ -25,7 +25,7 @@ export const CreateNewGroupBox = () => {
 		setNewGroupPhoto(null);
 	};
 	return (
-		<div className='bg-blue-900 rounded-md flex flex-col p-3 gap-3 justify-start border-2 border-zinc-400 cursor-pointer'>
+		<div className='bg-blue-900 rounded-md flex flex-col p-2 sm:p-3 gap-2 sm:gap-3 justify-start border-2 border-zinc-400 cursor-pointer text-sm sm:text-base'>
 			<input
 				className='bg-blue-500 w-full rounded-md flex items-center justify-center outline-none px-4 py-1 placeholder:text-white'
 				type='text'

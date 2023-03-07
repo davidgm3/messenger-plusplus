@@ -36,6 +36,7 @@ export const GroupHeader = () => {
 		);
 
 		//persist to state
+
 		setMembersInfo(_membersInfo);
 	};
 
@@ -55,7 +56,7 @@ export const GroupHeader = () => {
 	if (!activeGroup) return null;
 
 	return (
-		<div className='bg-blue-200 py-2 px-4 border-b-2 border-b-zinc-400'>
+		<div className='bg-blue-200 py-2 px-4 border-b-2 border-b-zinc-400 '>
 			<div className='flex items-center justify-between'>
 				<div>
 					<div className='flex items-center'>
@@ -73,12 +74,19 @@ export const GroupHeader = () => {
 							Members:{' '}
 						</span>
 
-						{membersInfo.map((member: User, index: number) => (
-							<span key={index}>
-								{member.displayName}
-								{index === membersInfo.length - 1 ? '' : ', '}
-							</span>
-						))}
+						{membersInfo.map((member: User, index: number) => {
+							if (index > 2) return null;
+
+							return (
+								<span key={index}>
+									{member.displayName}
+									{index === membersInfo.length - 1
+										? ''
+										: ', '}
+								</span>
+							);
+						})}
+						{membersInfo.length > 2 && <span> ...</span>}
 					</div>
 				</div>
 				<div className='flex flex-col gap-2'>
