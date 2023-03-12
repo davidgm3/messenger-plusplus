@@ -42,7 +42,7 @@ export const MessageBox = ({ message, onLoadUserInfo }: Props) => {
 	}, [message]);
 
 	return (
-		<div className='bg-gray-800 text-white hover:bg-gray-700 border border-gray-700 rounded-md  px-4 py-2 my-2 mx-4 transition-colors overflow-hidden  break-words'>
+		<div className='bg-gray-800 text-white hover:bg-gray-700 border border-gray-700 rounded-md  px-4 py-2 my-2 mx-2 sm:m-4 transition-colors overflow-hidden  break-words'>
 			<div className='flex gap-4 w-full grow'>
 				<div className='w-8 h-8 sm:w-10 sm:h-10 rounded-full flex-shrink-0'>
 					<img
@@ -65,6 +65,15 @@ export const MessageBox = ({ message, onLoadUserInfo }: Props) => {
 					<div className='text-base'>{message.content}</div>
 				</div>
 			</div>
+			{message.photoURL && (
+				<div className='flex justify-center bg-gray-700 border border-gray-600 rounded-md p-2 mt-2 max-h-[400px] '>
+					<img
+						src={message.photoURL}
+						alt=''
+						className='object-contain '
+					/>
+				</div>
+			)}
 		</div>
 	);
 };

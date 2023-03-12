@@ -2,6 +2,7 @@ export interface Message {
 	content: string;
 	senderId: string;
 	timestamp: number;
+	photoURL?: string;
 }
 
 export interface Group {

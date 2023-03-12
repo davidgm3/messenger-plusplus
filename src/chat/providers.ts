@@ -109,6 +109,7 @@ export const getGroupsFromUser = async (uid: string): Promise<Group[]> => {
 			messages: Message[];
 			photoURL: string;
 		}
+
 		//Get data, and add to it groupId
 		const data: Group[] = querySnapshot.docs.map((doc) => {
 			return { ...(doc.data() as DocData), id: doc.id as string };
@@ -122,17 +123,43 @@ export const getGroupsFromUser = async (uid: string): Promise<Group[]> => {
 
 //Given a message object and groupId, it adds the message to the group
 //Returns true if successful, false otherwise
-export const sendNewMessage = async (message: Message, groupId: string) => {
+type sendNewMessageMessage = {
+	content: string;
+	senderId: string;
+	timestamp: number;
+	photo?: File | null;
+};
+export const sendNewMessage = async (
+	message: sendNewMessageMessage,
+	groupId: string
+) => {
 	try {
+		//Object for new message
+		const newMessage = {
+			content: message.content,
+			senderId: message.senderId,
+			timestamp: message.timestamp,
+			photoURL: undefined as string | undefined,
+		};
+		//Upload photo if it exists
+		if (message.photo) {
+			console.log('photo exists');
+			const photoURL = await uploadChatPhoto(message.photo);
+			if (!photoURL) throw new Error('Error uploading photo');
+			newMessage['photoURL'] = photoURL;
+		}
+
 		//Add message to group messages array
 		await updateDoc(doc(FirebaseDB, 'groups', groupId), {
 			messages: arrayUnion({
-				content: message.content,
-				senderId: message.senderId,
-				timestamp: message.timestamp,
+				content: newMessage.content,
+				senderId: newMessage.senderId,
+				timestamp: newMessage.timestamp,
+
+				photoURL: newMessage.photoURL ? newMessage.photoURL : null,
 			}),
 		});
-		return true;
+		return newMessage;
 	} catch (e) {
 		console.log(e);
 		return false;
@@ -181,6 +208,30 @@ export const uploadGroupPhoto = async (file: File) => {
 			'group-photos/' + file.name + '-' + Date.now() + v4()
 		);
 		const snapshot = await uploadBytes(groupPhotosRef, file);
+
+		//Get the url of the uploaded file
+		const url = await getDownloadURL(snapshot.ref);
+		return url;
+	} catch (e) {
+		console.log(e);
+		return null;
+	}
+};
+
+export const uploadChatPhoto = async (file: File) => {
+	try {
+		//get mime type of file
+		const mimeType = file.type;
+		//throw error if file is not an image
+		if (mimeType.split('/')[0] !== 'image')
+			throw new Error('File is not an image');
+
+		//Upload file to firebase storage, generating a unique name
+		const chatPhotosRef = ref(
+			FirebaseStorage,
+			'chat-photos/' + file.name + '-' + Date.now() + v4()
+		);
+		const snapshot = await uploadBytes(chatPhotosRef, file);
 
 		//Get the url of the uploaded file
 		const url = await getDownloadURL(snapshot.ref);

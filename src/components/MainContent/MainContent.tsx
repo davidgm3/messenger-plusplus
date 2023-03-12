@@ -15,7 +15,6 @@ export const MainContent = () => {
 
 	//scrolls to bottom of messages box
 	const scrollToBottom = () => {
-		console.log('scrolling to bottom');
 		messagesBox.current?.scrollTo({
 			top: 9007199254740991,
 			behavior: 'smooth',
@@ -23,7 +22,6 @@ export const MainContent = () => {
 	};
 
 	const scrollToBottomNoAnim = () => {
-		console.log('scrolling to bottom no anim');
 		messagesBox.current?.scrollTo({
 			top: 9007199254740991,
 			behavior: 'auto',

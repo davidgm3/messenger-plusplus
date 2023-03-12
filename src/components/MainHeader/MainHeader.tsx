@@ -22,7 +22,7 @@ export const MainHeader = () => {
 	}, [authState.status]);
 
 	return (
-		<div className='bg-gray-900 h-16 sm:h-20 border-b border-b-gray-600'>
+		<div className='bg-gray-900 p-4 border-b border-b-gray-600'>
 			<div className='flex items-center container mx-auto text-white h-full'>
 				<div className='font-bold text-xl sm:text-2xl font-shantel-sans'>
 					Messenger++

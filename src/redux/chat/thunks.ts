@@ -8,21 +8,32 @@ import {
 	setActiveGroup,
 	setGroups,
 } from './chatSlice';
-import { sendNewMessage, removeFromGroup } from './../../chat/providers';
+import {
+	sendNewMessage,
+	removeFromGroup,
+	uploadGroupPhoto,
+} from './../../chat/providers';
 import { AppDispatch, RootState } from '../store';
 import { Message, User } from '../../types/types';
 
 //loads the authenticated user's groups into store
 
 //creates a new message
-export const newMessage = (message: Message) => {
+type startNewMessageProps = {
+	content: string;
+	senderId: string;
+	timestamp: number;
+	photo?: File | null;
+};
+export const startNewMessage = (message: startNewMessageProps) => {
 	return async (dispatch: AppDispatch, getState: () => RootState) => {
 		try {
 			//sends message to firestore
-			sendNewMessage(message, getState().chat.activeGroup?.id || '');
+			const newMessage = await sendNewMessage(
+				message,
+				getState().chat.activeGroup?.id || ''
+			);
 			//pushes message to active group in store
-			dispatch(pushMessageToActiveGroup(message));
-			//reload groups
 			dispatch(reloadGroups());
 		} catch (error) {
 			console.log(error);
