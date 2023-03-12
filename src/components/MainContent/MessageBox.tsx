@@ -28,12 +28,12 @@ export const MessageBox = ({ message, userInfo }: Props) => {
 	return (
 		<div className='bg-gray-800 text-white hover:bg-gray-700 border border-gray-700 rounded-md  px-4 py-2 my-2 mx-2 sm:m-4 transition-colors overflow-hidden  break-words'>
 			{!userInfo && (
-				<div className='animate-pulse flex gap-4 w-full grow'>
+				<div className='flex gap-4 w-full grow'>
 					<div className='w-8 h-8 sm:w-10 sm:h-10 rounded-full flex-shrink-0 bg-gray-600'></div>
 					<div className='grow sm:grow-0'>
 						<div className='flex sm:gap-8 items-center mb-2'>
-							<div className='font-semibold text-sm sm:text-base grow  bg-gray-600 h-4 w-[150px] rounded-sm'></div>
-							<div className='text-xs ml-auto bg-gray-600 h-4 w-[60px] rounded-sm'></div>
+							<div className='font-semibold text-sm sm:text-base grow sm:w-[140px] bg-gray-600 h-4 max-w-[140px] rounded-sm'></div>
+							<div className='text-xs bg-gray-600 h-4 w-[60px] ml-auto  rounded-sm'></div>
 						</div>
 						<div className='text-base bg-gray-600 h-4 w-full rounded-sm'></div>
 					</div>
