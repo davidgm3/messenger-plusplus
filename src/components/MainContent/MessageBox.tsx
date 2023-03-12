@@ -32,8 +32,8 @@ export const MessageBox = ({ message, userInfo }: Props) => {
 					<div className='w-8 h-8 sm:w-10 sm:h-10 rounded-full flex-shrink-0 bg-gray-600'></div>
 					<div className='grow sm:grow-0'>
 						<div className='flex sm:gap-8 items-center mb-2'>
-							<div className='font-semibold text-sm sm:text-base grow  bg-gray-600 h-4 w-[200px] rounded-sm'></div>
-							<div className='text-xs ml-auto bg-gray-600 h-4 w-[70px] rounded-sm'></div>
+							<div className='font-semibold text-sm sm:text-base grow  bg-gray-600 h-4 w-[150px] rounded-sm'></div>
+							<div className='text-xs ml-auto bg-gray-600 h-4 w-[60px] rounded-sm'></div>
 						</div>
 						<div className='text-base bg-gray-600 h-4 w-full rounded-sm'></div>
 					</div>
