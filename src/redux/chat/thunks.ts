@@ -34,7 +34,6 @@ export const startNewMessage = (message: startNewMessageProps) => {
 				getState().chat.activeGroup?.id || ''
 			);
 			//pushes message to active group in store
-			dispatch(reloadGroups());
 		} catch (error) {
 			console.log(error);
 		}
@@ -57,9 +56,9 @@ export const reloadGroups = () => {
 			//gets active group id
 			const activeGroupId = getState().chat.activeGroup?.id || '';
 			//sets groups in store
+			console.log(groups);
 			dispatch(setGroups(groups));
 			dispatch(setActiveGroup(activeGroupId));
-			console.log('reload groups');
 		} catch (error) {
 			console.log(error);
 		}
@@ -74,7 +73,6 @@ export const startLeaveGroup = (groupId: string) => {
 			const state = getState();
 			if (state.auth.user?.uid) {
 				await removeFromGroup(groupId, state.auth.user.uid);
-				dispatch(reloadGroups());
 			}
 		} catch (error) {
 			console.log(error);
@@ -94,7 +92,6 @@ export const startCreateGroup = (name: string, file: File) => {
 			} else {
 				alert('Invalid data');
 			}
-			dispatch(reloadGroups());
 		} catch (error) {
 			console.log(error);
 		}
@@ -112,7 +109,6 @@ export const startJoinGroup = (groupId: string) => {
 			} else {
 				alert('Invalid data');
 			}
-			dispatch(reloadGroups());
 		} catch (error) {
 			console.log(error);
 		}

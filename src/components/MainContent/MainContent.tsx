@@ -3,9 +3,10 @@ import { RootState } from '../../redux/store';
 import { NoGroup } from './NoGroup';
 import { InputBar } from './InputBar';
 import { GroupHeader } from './GroupHeader';
-import { Message } from './../../types/types';
+import { Message, User } from './../../types/types';
 import { MessageBox } from './MessageBox';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
+import { getUserInfo } from '../../auth/providers';
 
 export const MainContent = () => {
 	const chatInfo = useAppSelector((state: RootState) => state.chat);
@@ -28,12 +29,34 @@ export const MainContent = () => {
 		});
 	};
 	//scroll to bottom when new message is added or active group changes
+	//stores user info for each unique user in the active group, keeps track of users that have already been fetched
+	const [usersInfoCache, setUsersInfoCache] = useState<{
+		[key: string]: User;
+	}>({});
 	useEffect(() => {
-		setTimeout(() => {
-			scrollToBottomNoAnim();
-		}, 300);
+		//fetches user info for each user in the active group that is not on cache
+		if (chatInfo.activeGroup) {
+			chatInfo.activeGroup.messages.forEach((message) => {
+				if (!usersInfoCache[message.senderId]) {
+					getUserInfo(message.senderId).then((info) => {
+						if (info) {
+							setUsersInfoCache((prev) => ({
+								...prev,
+								[message.senderId]: info as User,
+							}));
+						}
+					});
+				}
+			});
+		}
 	}, [chatInfo.activeGroup]);
 
+	//when cache or active group id changes, scroll to bottom
+	useEffect(() => {
+		scrollToBottomNoAnim();
+	}, [usersInfoCache, chatInfo.activeGroup?.id]);
+
+	//scrolls to bottom smooth when new message is added
 	useEffect(() => {
 		scrollToBottom();
 	}, [chatInfo.activeGroup?.messages]);
@@ -49,7 +72,11 @@ export const MainContent = () => {
 					>
 						{chatInfo.activeGroup.messages.map(
 							(message: Message, index: number) => (
-								<MessageBox message={message} key={index} />
+								<MessageBox
+									message={message}
+									userInfo={usersInfoCache[message.senderId]}
+									key={index}
+								/>
 							)
 						)}
 					</div>
