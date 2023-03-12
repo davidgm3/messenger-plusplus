@@ -78,8 +78,27 @@ export const removeFromGroup = async (groupId: string, uid: string) => {
 			const photoURL = data?.photoURL;
 
 			if (data?.members.length === 0) {
-				//delete photo from storage
+				//delete group photo from storage
 				const photoRef = ref(FirebaseStorage, photoURL);
+				const docSnap = await getDoc(docRef);
+				//remove message photos from storage iteratively
+				if (docSnap.exists()) {
+					const data = docSnap.data();
+					const messages = data?.messages;
+					if (messages) {
+						for (const message of messages) {
+							const photoURL = message.photoURL;
+							if (photoURL) {
+								const _photoRef = ref(
+									FirebaseStorage,
+									photoURL
+								);
+								deleteObject(_photoRef);
+							}
+						}
+					}
+				}
+
 				await deleteObject(photoRef);
 				await deleteDoc(docRef);
 			}
