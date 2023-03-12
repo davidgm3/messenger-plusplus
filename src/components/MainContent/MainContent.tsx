@@ -40,12 +40,10 @@ export const MainContent = () => {
 				if (!usersInfoCache[message.senderId]) {
 					getUserInfo(message.senderId).then((info) => {
 						if (info) {
-							setTimeout(() => {
-								setUsersInfoCache((prev) => ({
-									...prev,
-									[message.senderId]: info as User,
-								}));
-							}, 10000);
+							setUsersInfoCache((prev) => ({
+								...prev,
+								[message.senderId]: info as User,
+							}));
 						}
 					});
 				}
