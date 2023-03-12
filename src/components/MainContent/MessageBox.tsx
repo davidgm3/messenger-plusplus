@@ -42,9 +42,7 @@ export const MessageBox = ({ message, onLoadUserInfo }: Props) => {
 				}
 			})
 			.then(() => {
-				setTimeout(() => {
-					setIsLoading(false);
-				}, 1000);
+				setIsLoading(false);
 			});
 	}, [message]);
 
